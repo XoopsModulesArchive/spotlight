@@ -1,0 +1,198 @@
+<{if $block.message != ""}>
+  <div style="text-align: center;">
+    <{$block.message}>
+  </div>
+<{else}>
+ <div style="text-align: center;">
+    <{$block.header}>
+</div>
+<{if $block.select_template != "1"}>
+<table border="0" cellpadding="2" cellspacing="1" width="100%" >
+  <tr align="left"> 
+    <td style="line-height: 16px;" colspan="3">  
+      <a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$block.articleid}>">
+		<div class="itemHead"><span class="itemTitle"><{$block.articletitle}></span></div>	
+	  </a>
+    </td>
+  </tr>
+  <tr align="left"> 
+    <td colspan="3" style="line-height: 10px;"> 
+		<div class = 'even'><span class="itemPoster"><b><{$block.lang_by}></b> <a href="<{$xoops_url}>/userinfo.php?uid=<{$block.uid}>"><{$block.author}></a></span></div>
+    </td>
+  </tr>
+  <tr align="left">
+    <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td class  = bg width="45%"> 
+		<{if $block.image != ""}> 
+			<div align="<{$block.imagealign}>">
+		  		<span style="float:center; background-color: transparent;">  
+            		<a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$block.articleid}>">
+						<img src="<{$xoops_url}>/<{$block.imgpath}>/<{$block.image}>" alt="<{$block.articletitle}>" width="<{$block.imgwidth}>"  height="<{$block.imgheight}>" /> 
+            		</a>
+				</span>
+			</div> 
+	  	<{/if}>
+     <td class  = bg width="55%">
+	 <p align=justify><{$block.summary_wfsection}></p>
+	 </td>
+  </tr>
+  <tr align="left"> 
+    <td style="line-height: 20px;" valign="top" colspan="2" ><small>
+		<a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$block.articleid}>"><{$block.lang_read}></a> 
+    	<!-- Only registered users see comments -->
+      	<{if $xoops_userid != ""}> &nbsp;|&nbsp;<{$block.lang_rating}>&nbsp;<{$block.rating}>&nbsp;| 
+      	<a href="<{$xoops_url}>/modules/wfsection/comment_new.php?com_itemid=<{$block.articleid}>"><{$block.lang_write}></a>
+	  	</small>
+		<{/if}> 
+	  </td>
+  </tr>
+  <!-- If webmaster selected to include other news -->
+  <{if $block.lang_other_articles !=""}>
+  <tr> </tr>
+  <tr>
+    <td class = 'head' style="line-height: 10px;" colspan="2" align = "left"> 
+      <div style="margin-bottom: 0px; padding-left: 2px;">
+        <div align="left"><b><{$block.lang_other_articles}></b></div>
+      </div>    </td>
+  <tr> 
+    <td height="100%" colspan="2"> 
+      <ul style="margin: 0px; margin-bottom: 0px;">
+        <{foreach item=wfss from=$block.articles}> 
+        	<li> 
+				<a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$wfss.id}>"><{$wfss.title}></a>&nbsp;(<{$wfss.hitsordate}>) 
+          		<{if $block.textview == 1}> 
+          			<div style="margin-bottom: 6px; margin-left: 16px;"><{$wfss.summary}></div>
+        		<{/if}> 
+		</li>
+        <{/foreach}> 
+      </ul>
+    </td>
+  </tr>
+  <{/if}> 
+  <{if $block.catsel != ""}>
+  	<!-- Topics select form by R&B -->
+  	<tr> 
+    	<td align="left" style="padding: 0 0 6px 0;" colspan="2"><{$block.catsel}></td>
+  	</tr>
+  <{/if}> 
+  <{if $block.lang_ministats != ""}> 
+  	<tr> 
+    	<td align = 'center' colspan="3"> 
+	     	<div align = 'center' class = 'even' style="line-height: 10px; "><small><b><{$block.lang_ministats}>&nbsp;</b><{$block.ministats}></small></div>
+		</td>
+  	</tr>
+  <{/if}> 
+  <!-- table end -->
+</table>
+<{else}>  
+  
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+  <tr align="left"> 
+    <td style="line-height: 16px;" colspan="3">  
+      <a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$block.articleid}>">
+		<div class="itemHead"><span class="itemTitle"><{$block.articletitle}></span></div>	
+	  </a>
+    </td>
+  </tr>
+  <tr align="left"> 
+    <td colspan="2" style="line-height: 10px;">
+	<div class = 'even'><span class="itemPoster"><b><{$block.lang_by}></b> <a href="<{$xoops_url}>/userinfo.php?uid=<{$block.uid}>"><{$block.author}></a></span></div>
+    </td>
+  </tr>
+  <tr align="left">
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr valign="top"> 
+ 
+	<td width="55%" valign="top" align = "left"> 
+	  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+        <tr> 
+          <td> 
+		  	<{if $block.image != ""}> 
+			  <div align="<{$block.imagealign}>">
+				<a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$block.articleid}>">
+				  <img src="<{$xoops_url}>/<{$block.imgpath}>/<{$block.image}>" alt="<{$block.articletitle}>" width="<{$block.imgwidth}>"  height="<{$block.imgheight}>" /> 
+            	 </a></div>
+        	   <{/if}> 
+			  </td>
+        	</tr>
+		<{if $block.lang_other_articles !=""}> 
+        <tr> 
+          <td> 
+            <p align=justify>
+			<span style="float:left; margin-right: 10px; ">
+			<{$block.summary_wfsection}>
+			</span>
+			</p>
+          </td>
+        </tr>
+        <{/if}>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><small>
+		  <a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$block.articleid}>"><{$block.lang_read}></a> 
+      		<!-- Only registered users see comments -->
+      			<{if $xoops_userid != ""}> &nbsp;|&nbsp;<{$block.lang_rating}>&nbsp;<{$block.rating}>&nbsp;| 
+      				<a href="<{$xoops_url}>/modules/wfsection/comment_new.php?com_itemid=<{$block.articleid}>"><{$block.lang_write}></a> 
+				<{/if}> 
+			</small>
+		  </td>
+        </tr>
+ 
+      </table>
+    </td>
+	<td rowspan= '3'> <{if $block.lang_other_articles !=""}> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="2">
+        <tr> 
+          <td style="line-height: 10px;" align="left"> 
+            <div class = 'head' style="margin-bottom: 0px; padding-left: 2px;">
+              <div align="left"><b><{$block.lang_other_articles}></b></div>
+            </div>          </td>
+        </tr>
+        <td height="100%"> 
+          <ul style="margin: 0px;">
+            <{foreach item=wfss from=$block.articles}> 
+			<table width="100%"  border="0" cellspacing="1" cellpadding="2">
+  				<tr>
+    				<td style="line-height: 12px;"><li><a href="<{$xoops_url}>/modules/wfsection/article.php?articleid=<{$wfss.id}>"><{$wfss.title}></a>&nbsp;(<{$wfss.hitsordate}>)</li></td>
+  				</tr>
+  				<tr>
+    				<td><div style="margin-bottom: 1px; margin-left: 16px;"><{$wfss.summary}></div>
+    				</td>
+  				</tr>
+			</table>            
+			<{/foreach}> 
+          </ul>
+        </td>
+        </tr>
+      </table>
+      <{else}> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="2" >
+        <tr> 
+          <td ><{$block.summary_wfsection}></td>
+        </tr>
+      </table>
+      <{/if}> </td>
+  </tr>
+  <tr>
+  </tr>
+  <tr> 
+  </tr>
+  <tr> 
+    <td style="line-height: 20px;" valign="bottom"></td>
+    <td align="center" style="padding: 0 0 6px 0;"> <{$block.catsel}></td>
+  </tr>
+  <{if $block.lang_ministats != ""}> 
+  <tr> 
+     <td colspan="2">  
+      <div align = 'center' class = 'even' style="line-height: 10px; "><small><b><{$block.lang_ministats}>&nbsp;</b><{$block.ministats}></small></div>
+	</td>
+  </tr>
+  <{/if}> 
+</table>
+<{/if}>
+<{/if}>
